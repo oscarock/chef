@@ -24459,6 +24459,7 @@ new Vue({
     },
     data: {
         superhero: [],
+        fillsuperhero: {'id': '', 'name': '', 'picture': '', 'publisher':'', 'info':'info'}
     },
     methods: {
         getAll: function(){
@@ -24476,7 +24477,24 @@ new Vue({
             }
         },
         viewSuperhero: function(superhero){
+            this.fillsuperhero.id = superhero.id
+            this.fillsuperhero.name = superhero.name
+            this.fillsuperhero.picture = superhero.picture
+            this.fillsuperhero.publisher = superhero.publisher
+            this.fillsuperhero.info = superhero.info
+
             $("#view").modal("show")
+        },
+        voteSuperhero: function(superhero){
+            var urladdvote = 'addVote'
+            axios.get(urladdvote, {
+                params: {
+                  id: superhero
+                }
+                }).then(response => {
+                    $("#view").modal("hide")
+                    toastr.success("Voto Agregado!!")
+            })
         }
     }
 })

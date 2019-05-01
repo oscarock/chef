@@ -1,20 +1,20 @@
 <!-- The Modal -->
-<form method="POST" v-on:submit.prevent="viewBlog(fillBlog.id)">
+<form method="POST" v-on:submit.prevent="viewSuperhero(fillsuperhero.id)">
     <div class="modal fade" id="view">
         <div class="modal-dialog">
             <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Ver Entrada</h4>
+                <h5 class="modal-title">@{{ fillsuperhero.name }} | @{{ fillsuperhero.publisher }}</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-               <!-- <label for="title">Titulo</label>
-                <input type="text" name="title" class="form-control" v-model="fillBlog.title">
-                <label for="body">Contenido</label>
-                <textarea name="body" cols="30" rows="10" class="form-control" v-model="fillBlog.body"></textarea>-->
+                <img class="card-img-top" v-bind:src="fillsuperhero.picture" style="width: 150px;margin: auto; display: block;"><br>
+                <h6>¿ Desea votar por el superheroe ? <a href="#" v-on:click.prevent="voteSuperhero(fillsuperhero.id)"><i class="fas fa-star"></i></a></h6>
+                <h3>Informacion</h3>
+                <p>@{{ fillsuperhero.info }}</p>
             </div>
             
             <!-- Modal footer -->
