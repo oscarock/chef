@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('addVote', 'VoteController@addvote');
+
+Route::get('ranking', function () {
+    return view('ranking');
+});
+
+Route::get('votesSuperheros', 'VoteController@votesSuperheros');

@@ -18,17 +18,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio</a>
+                    <a class="nav-link" href="{{ url('/') }}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ranking </a>
+                    <a class="nav-link" href="{{ url('ranking') }}">Ranking </a>
                 </li>
                 </ul>
             </div>
         </nav>
-        <div class="container pt-5" id="app">
-            @yield('content')
-        </div>
+        @yield('content')
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -24455,11 +24455,12 @@ new Vue({
     el: '#app',
     created: function(){
         this.getAll()
-        
+        this.getAllVotes()
     },
     data: {
         superhero: [],
-        fillsuperhero: {'id': '', 'name': '', 'picture': '', 'publisher':'', 'info':'info'}
+        fillsuperhero: {'id': '', 'name': '', 'picture': '', 'publisher':'', 'info':'info'},
+        votesSuperhero: [],
     },
     methods: {
         getAll: function(){
@@ -24495,6 +24496,16 @@ new Vue({
                     $("#view").modal("hide")
                     toastr.success("Voto Agregado!!")
             })
-        }
+        },
+        getAllVotes: function(){
+            console.log("entreeee")
+            var urlgetvotes = "votesSuperheros"
+            axios.get(urlgetvotes).then(response => {
+                this.votesSuperhero = response.data
+                //this.votesSuperhero.id = response.data.id
+                console.log(this.votesSuperhero = response.data)
+            })
+            //$("#ranking").modal("show")
+        },
     }
 })
