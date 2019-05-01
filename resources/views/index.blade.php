@@ -2,35 +2,20 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" v-for="superhero in superhero">
         <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" v-bind:src="superhero.picture" v-bind:alt="superhero.name" >
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="float-right">
+                    <a href="#" v-on:click.prevent="stateHero(superhero.id,'like')"><i id="like" class="fas fa-thumbs-up"></i></a>&nbsp;&nbsp;
+                    <a href="#" id="dontlike" v-on:click.prevent="stateHero(superhero.id,'dontlike')"><i class="fas fa-thumbs-down"></i></a>
+                </div>
+                <h5 class="card-title">@{{ superhero.name }}</h5>                
+                <p class="card-text">@{{ superhero.publisher }}</p>
+                <a href="#" v-on:click.prevent="viewSuperhero(superhero)" class="btn btn-primary">Ver Mas</a>
             </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
+        </div><br>
+    </div>   
 </div>
+@include('partials.view') 
 @endsection
