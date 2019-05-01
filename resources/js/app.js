@@ -16,7 +16,7 @@ new Vue({
                 this.superhero = response.data
             })
         },
-        stateHero: function(id,state){
+        localStorageState: function(id,state){
             localStorage.setItem(id, state);
             if(state == "like"){
                 toastr.success("me gusta")
@@ -45,14 +45,10 @@ new Vue({
             })
         },
         getAllVotes: function(){
-            console.log("entreeee")
             var urlgetvotes = "votesSuperheros"
             axios.get(urlgetvotes).then(response => {
                 this.votesSuperhero = response.data
-                //this.votesSuperhero.id = response.data.id
-                console.log(this.votesSuperhero = response.data)
             })
-            //$("#ranking").modal("show")
         },
     }
 })
