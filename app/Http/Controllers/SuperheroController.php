@@ -12,10 +12,20 @@ class SuperheroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $superheros = Superheros::get();
-        return $superheros;
+        $superheros = Superheros::paginate(9);
+        return [
+            'pagination' => [
+                'total'         => $superheros->total(),
+                'current_page'  => $superheros->currentPage(),
+                'per_page'      => $superheros->perPage(),
+                'last_page'     => $superheros->lastPage(),
+                'from'          => $superheros->firstItem(),
+                'to'            => $superheros->lastItem(),
+            ],
+            'superheros' => $superheros
+        ];
     }
 
     /**
